@@ -1,5 +1,9 @@
 package nmp.com.mx.valuacion.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import nmp.com.mx.valuacion.Exceptions.MaterialException;
 import nmp.com.mx.valuacion.dto.ValuationRequestDTO;
 import nmp.com.mx.valuacion.dto.ValuationResponseDTO;
@@ -31,6 +35,10 @@ public class ValuationController {
      * @param valuationRequestDTO
      * @return ValuationResponseDTO
      * */
+    @Operation(summary = "Calcula el valor de una prenda de acuerdo al material y peso", responses = {
+            @ApiResponse(description = "Successful Operation", responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ValuationResponseDTO.class))),
+            @ApiResponse(responseCode = "404", description = "Not found", content = @Content),
+            @ApiResponse(responseCode = "401", description = "Authentication Failure", content = @Content(schema = @Schema(hidden = true))) })
     @PostMapping("/calculate")
     public ValuationResponseDTO calcItemValue (@RequestBody ValuationRequestDTO valuationRequestDTO) {
 
