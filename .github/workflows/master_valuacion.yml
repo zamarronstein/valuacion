@@ -15,6 +15,7 @@ jobs:
     env:
       MONGODB_URI: ${{ secrets.MONGODB_URI }}
       PORCENTAJE: ${{ secrets.PORCENTAJE }}
+      ISSUER_URI: ${{ secrets.ISSUER_URI }}
 
     steps:
       - uses: actions/checkout@v4
