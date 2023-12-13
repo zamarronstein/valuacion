@@ -37,8 +37,10 @@ public class ValuationController {
      * */
     @Operation(summary = "Calcula el valor de una prenda de acuerdo al material y peso", responses = {
             @ApiResponse(description = "Successful Operation", responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ValuationResponseDTO.class))),
-            @ApiResponse(responseCode = "404", description = "Not found", content = @Content),
-            @ApiResponse(responseCode = "401", description = "Authentication Failure", content = @Content(schema = @Schema(hidden = true))) })
+            @ApiResponse(responseCode = "404", description = "Not Found", content = @Content),
+            @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(schema = @Schema(hidden = true))),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content),
+    })
     @PostMapping("/calculate")
     public ValuationResponseDTO calcItemValue (@RequestBody ValuationRequestDTO valuationRequestDTO) {
 
