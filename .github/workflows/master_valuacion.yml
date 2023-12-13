@@ -15,7 +15,7 @@ jobs:
     env:
       MONGODB_URI: ${{ secrets.MONGODB_URI }}
       PORCENTAJE: ${{ secrets.PORCENTAJE }}
-      ISSUER_URI: ${{ env.ISSUER_URI }}
+      ISSUER_URI: ${{ vars.ISSUER_URI }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up Java version
