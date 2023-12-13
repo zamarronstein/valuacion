@@ -21,6 +21,7 @@ public class ResourceServerConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(auth -> auth
+                        .requestMatchers(HttpMethod.GET, "/").permitAll()
                         .requestMatchers(HttpMethod.GET, "/doc/swagger-ui/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/v3/api-docs/**").permitAll()
                         .anyRequest().authenticated())
